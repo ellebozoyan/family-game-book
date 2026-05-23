@@ -1,0 +1,1361 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<title>The Family Game Book</title>
+<meta name="description" content="A book of games for Alexander and Nicolas — yard games, schoolyard games, party games, and the classics every kid should know.">
+<meta name="theme-color" content="#1c3a5e">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="Game Book">
+<link rel="manifest" href="manifest.json">
+<link rel="apple-touch-icon" href="icon-192.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600;9..144,700;9..144,800&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+<style>
+:root{
+  --ink:#2d2018;
+  --ink-soft:#5a4f43;
+  --cream:#f8f4ea;
+  --cream-deep:#ede4ce;
+  --cream-darker:#e2d7b8;
+  --paper:#fffaf0;
+  --sun:#f5d547;
+  --sun-deep:#c9a91f;
+  --grass:#5d8a3a;
+  --grass-deep:#3d5e25;
+  --sky:#4a90b8;
+  --sky-deep:#2c6a8d;
+  --sunset:#d96d3d;
+  --sunset-deep:#a04e26;
+  --cherry:#c73e3a;
+  --cherry-deep:#9c2a26;
+  --berry:#8c4a6e;
+  --slate:#5a5550;
+  --slate-deep:#3a3530;
+  --sage:#7a8c5f;
+  --pink:#d99cb8;
+  --gold:#c89564;
+  --gold-deep:#a66b3e;
+  --teal:#4a9c8f;
+  --navy:#1c3a5e;
+  --navy-deep:#0f2444;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth;}
+body{
+  margin:0; padding:0;
+  font-family:'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;
+  font-size:16px; line-height:1.6; color:var(--ink);
+  background:var(--cream);
+  background-image:
+    radial-gradient(circle at 20% 10%, rgba(245,213,71,0.08), transparent 40%),
+    radial-gradient(circle at 80% 70%, rgba(74,144,184,0.08), transparent 40%);
+  background-attachment:fixed;
+  -webkit-font-smoothing:antialiased;
+}
+h1,h2,h3,h4{font-family:'Fraunces', Georgia, serif; font-weight:700; color:var(--navy-deep); line-height:1.15;}
+h1{font-size:2.6rem; margin:0 0 0.4rem; letter-spacing:-0.02em}
+h2{font-size:2rem; margin:0 0 0.6rem; letter-spacing:-0.01em}
+h3{font-size:1.3rem; margin:0 0 0.5rem}
+h4{font-size:1.05rem; margin:0 0 0.3rem}
+p{margin:0 0 1rem}
+
+.top-banner{
+  background:linear-gradient(135deg, var(--navy) 0%, var(--navy-deep) 100%);
+  color:var(--cream);
+  padding:2.8rem 1.5rem 2.2rem;
+  text-align:center;
+  position:relative;
+  overflow:hidden;
+}
+.top-banner::before{
+  content:""; position:absolute; inset:0;
+  background-image:
+    radial-gradient(circle at 15% 20%, rgba(245,213,71,0.15) 0%, transparent 30%),
+    radial-gradient(circle at 85% 70%, rgba(199,62,58,0.15) 0%, transparent 30%);
+}
+.top-banner h1{color:var(--cream); font-size:2.4rem; position:relative;}
+.top-banner p{color:rgba(248,244,234,0.85); font-style:italic; font-family:'Fraunces',serif; font-size:1.1rem; margin:0.4rem 0 0; position:relative;}
+.byline{font-size:0.9rem !important; opacity:0.8; margin-top:0.6rem !important;}
+
+main{max-width:1100px; margin:0 auto; padding:1.5rem 1.2rem 3rem;}
+
+.section-intro{
+  background:var(--cream-deep);
+  border-left:5px solid var(--sunset);
+  padding:1.2rem 1.4rem;
+  border-radius:0 12px 12px 0;
+  margin:1.5rem 0 2rem;
+  font-style:italic;
+  font-family:'Fraunces',serif;
+  font-size:1.05rem;
+  color:var(--ink-soft);
+}
+
+/* Tile grid for the index */
+.tile-grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fill, minmax(150px, 1fr));
+  gap:0.7rem;
+  margin:1rem 0 2.5rem;
+}
+.tile{
+  background:var(--paper);
+  border:2px solid transparent;
+  border-radius:14px;
+  padding:1rem 0.7rem 0.85rem;
+  text-decoration:none;
+  color:var(--ink);
+  text-align:center;
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  gap:0.4rem;
+  transition:transform 0.15s ease, box-shadow 0.15s ease;
+  box-shadow:0 2px 6px rgba(0,0,0,0.06);
+  cursor:pointer;
+}
+.tile:active{transform:translateY(1px); box-shadow:0 1px 3px rgba(0,0,0,0.1);}
+.tile:hover{transform:translateY(-2px); box-shadow:0 6px 14px rgba(0,0,0,0.1);}
+.tile-icon{
+  width:48px; height:48px;
+  border-radius:50%;
+  display:flex; align-items:center; justify-content:center;
+  font-size:1.6rem;
+  flex-shrink:0;
+}
+.tile-name{font-weight:700; font-size:0.95rem; line-height:1.2; color:var(--navy-deep);}
+.tile-cat{font-size:0.72rem; text-transform:uppercase; letter-spacing:0.04em; color:var(--ink-soft); font-weight:600;}
+
+/* Category headers in tile grid */
+.cat-divider{
+  grid-column:1 / -1;
+  margin:1.2rem 0 0.2rem;
+  padding-bottom:0.4rem;
+  border-bottom:2px solid var(--cream-darker);
+}
+.cat-divider:first-child{margin-top:0;}
+.cat-divider h3{font-size:1.05rem; margin:0; color:var(--ink-soft); font-family:'Plus Jakarta Sans',sans-serif; font-weight:700; text-transform:uppercase; letter-spacing:0.05em;}
+
+/* Game sections */
+.game{
+  background:var(--paper);
+  border-radius:18px;
+  margin:1.5rem 0;
+  overflow:hidden;
+  box-shadow:0 3px 10px rgba(0,0,0,0.06);
+  scroll-margin-top:1rem;
+}
+.game-header{
+  padding:1.4rem 1.4rem 1.2rem;
+  color:var(--cream);
+  display:flex; align-items:center; gap:0.9rem;
+  position:relative;
+}
+.game-header .icon{
+  width:56px; height:56px;
+  background:rgba(255,255,255,0.2);
+  border-radius:50%;
+  display:flex; align-items:center; justify-content:center;
+  font-size:1.8rem;
+  flex-shrink:0;
+}
+.game-header h2{color:var(--cream); margin:0; font-size:1.5rem;}
+.game-header .sub{font-size:0.85rem; opacity:0.85; font-style:italic; margin-top:0.15rem;}
+.game-body{padding:1.2rem 1.4rem 1.4rem;}
+
+.game-body h4{
+  font-family:'Plus Jakarta Sans',sans-serif;
+  text-transform:uppercase;
+  letter-spacing:0.05em;
+  font-size:0.78rem;
+  color:var(--ink-soft);
+  font-weight:700;
+  margin:1rem 0 0.4rem;
+  border-bottom:1px solid var(--cream-deep);
+  padding-bottom:0.3rem;
+}
+.game-body h4:first-child{margin-top:0;}
+.game-body ul{margin:0.3rem 0 0; padding-left:1.3rem;}
+.game-body li{margin:0.25rem 0;}
+.game-body p{margin:0.3rem 0;}
+
+.tip{
+  background:linear-gradient(135deg, rgba(245,213,71,0.18), rgba(245,213,71,0.08));
+  border-left:4px solid var(--sun-deep);
+  padding:0.8rem 1rem;
+  border-radius:0 10px 10px 0;
+  margin-top:1rem;
+  font-size:0.95rem;
+}
+.tip strong{color:var(--sun-deep); margin-right:0.3rem;}
+
+.back-to-top{
+  display:block;
+  text-align:center;
+  margin:0.8rem 0 0;
+  font-size:0.8rem;
+  color:var(--ink-soft);
+  text-decoration:none;
+}
+.back-to-top:hover{color:var(--navy);}
+
+/* Color themes for game headers */
+.theme-sun{background:linear-gradient(135deg, #f5d547, #c9a91f);}
+.theme-sun .icon{color:var(--ink);}
+.theme-sun h2, .theme-sun .sub{color:var(--ink);}
+.theme-grass{background:linear-gradient(135deg, #5d8a3a, #3d5e25);}
+.theme-sky{background:linear-gradient(135deg, #4a90b8, #2c6a8d);}
+.theme-sunset{background:linear-gradient(135deg, #d96d3d, #a04e26);}
+.theme-cherry{background:linear-gradient(135deg, #c73e3a, #9c2a26);}
+.theme-berry{background:linear-gradient(135deg, #a85e80, #6e3a56);}
+.theme-slate{background:linear-gradient(135deg, #5a5550, #3a3530);}
+.theme-sage{background:linear-gradient(135deg, #a0b385, #6e8053);}
+.theme-pink{background:linear-gradient(135deg, #d99cb8, #b06b8c);}
+.theme-pink h2, .theme-pink .sub{color:var(--ink);}
+.theme-pink .icon{color:var(--ink);}
+.theme-gold{background:linear-gradient(135deg, #c89564, #a66b3e);}
+.theme-teal{background:linear-gradient(135deg, #4a9c8f, #2d6e63);}
+.theme-navy{background:linear-gradient(135deg, #4a6a8c, #1c3a5e);}
+
+/* Tile color tags */
+.tile-icon.bg-sun{background:#f5d547; color:var(--ink);}
+.tile-icon.bg-grass{background:#5d8a3a; color:var(--cream);}
+.tile-icon.bg-sky{background:#4a90b8; color:var(--cream);}
+.tile-icon.bg-sunset{background:#d96d3d; color:var(--cream);}
+.tile-icon.bg-cherry{background:#c73e3a; color:var(--cream);}
+.tile-icon.bg-berry{background:#a85e80; color:var(--cream);}
+.tile-icon.bg-slate{background:#5a5550; color:var(--cream);}
+.tile-icon.bg-sage{background:#a0b385; color:var(--ink);}
+.tile-icon.bg-pink{background:#d99cb8; color:var(--ink);}
+.tile-icon.bg-gold{background:#c89564; color:var(--cream);}
+.tile-icon.bg-teal{background:#4a9c8f; color:var(--cream);}
+.tile-icon.bg-navy{background:#4a6a8c; color:var(--cream);}
+
+
+.video-link{
+  display:inline-block;
+  margin:0.4rem 0.3rem 0 0;
+  padding:0.4rem 0.8rem;
+  background:var(--navy);
+  color:var(--cream) !important;
+  border-radius:999px;
+  text-decoration:none;
+  font-size:0.85rem;
+  font-weight:600;
+  transition:background 0.15s ease, transform 0.1s ease;
+}
+.video-link:hover{background:var(--navy-deep);}
+.video-link:active{transform:translateY(1px);}
+.video-row{margin:0.8rem 0 0; display:flex; flex-wrap:wrap; gap:0.3rem;}
+.video-row-label{
+  display:block; font-family:'Plus Jakarta Sans',sans-serif; text-transform:uppercase;
+  letter-spacing:0.05em; font-size:0.78rem; color:var(--ink-soft); font-weight:700;
+  margin:1rem 0 0.2rem; border-bottom:1px solid var(--cream-deep); padding-bottom:0.3rem;
+}
+
+.pull-quote{
+  background:linear-gradient(135deg, var(--navy-deep), var(--navy));
+  color:var(--cream);
+  padding:1.5rem 1.8rem;
+  border-radius:14px;
+  margin:2.5rem 0;
+  font-family:'Fraunces',serif;
+  font-size:1.1rem;
+  line-height:1.5;
+  text-align:center;
+  font-style:italic;
+}
+
+footer{text-align:center; padding:2rem 1rem; color:var(--ink-soft); font-family:'Fraunces',serif; font-style:italic;}
+</style>
+</head>
+<body>
+
+<header class="top-banner" id="top">
+  <h1>The Family Game Book</h1>
+  <p>A book of games for the brothers, the cousins, the backyard, the playground.</p>
+  <p class="byline">For Alexander &amp; Nicolas</p>
+</header>
+
+<main>
+
+<div class="section-intro">
+  Some of these games are old. Some are new. Some need fancy equipment. Most just need an open space and a friend. Tap any game below to read the rules. Then go play.
+</div>
+
+<h2 style="margin-top:1.5rem">All the Games</h2>
+<p style="color:var(--ink-soft); margin-bottom:0.5rem">Tap a tile to jump to that game.</p>
+
+<div class="tile-grid">
+
+  <div class="cat-divider"><h3>🎯 Lawn Targets</h3></div>
+  <a href="#bocce" class="tile"><div class="tile-icon bg-sage">🟢</div><span class="tile-name">Bocce</span></a>
+  <a href="#croquet" class="tile"><div class="tile-icon bg-pink">🎯</div><span class="tile-name">Croquet</span></a>
+  <a href="#cornhole" class="tile"><div class="tile-icon bg-gold">🌽</div><span class="tile-name">Cornhole</span></a>
+  <a href="#ladder-toss" class="tile"><div class="tile-icon bg-sunset">🪜</div><span class="tile-name">Ladder Toss</span></a>
+  <a href="#molkky" class="tile"><div class="tile-icon bg-grass">🪵</div><span class="tile-name">Mölkky</span></a>
+  <a href="#ring-toss" class="tile"><div class="tile-icon bg-sun">⭕</div><span class="tile-name">Ring Toss</span></a>
+  <a href="#horseshoes" class="tile"><div class="tile-icon bg-slate">🧲</div><span class="tile-name">Horseshoes</span></a>
+
+  <div class="cat-divider"><h3>🥏 Toss &amp; Catch</h3></div>
+  <a href="#spikeball" class="tile"><div class="tile-icon bg-cherry">🟡</div><span class="tile-name">Spikeball</span></a>
+  <a href="#kanjam" class="tile"><div class="tile-icon bg-sky">🥏</div><span class="tile-name">KanJam</span></a>
+  <a href="#frisbee" class="tile"><div class="tile-icon bg-grass">🥏</div><span class="tile-name">Frisbee</span></a>
+
+  <div class="cat-divider"><h3>🏸 Net &amp; Court</h3></div>
+  <a href="#badminton" class="tile"><div class="tile-icon bg-sky">🏸</div><span class="tile-name">Badminton</span></a>
+  <a href="#volleyball" class="tile"><div class="tile-icon bg-sunset">🏐</div><span class="tile-name">Volleyball</span></a>
+  <a href="#tetherball" class="tile"><div class="tile-icon bg-cherry">🎾</div><span class="tile-name">Tetherball</span></a>
+  <a href="#shuffleboard" class="tile"><div class="tile-icon bg-gold">🟫</div><span class="tile-name">Shuffleboard</span></a>
+
+  <div class="cat-divider"><h3>⛳ Mini Courses</h3></div>
+  <a href="#mini-golf" class="tile"><div class="tile-icon bg-grass">⛳</div><span class="tile-name">Mini Golf</span></a>
+  <a href="#disc-golf" class="tile"><div class="tile-icon bg-teal">🥏</div><span class="tile-name">Disc Golf</span></a>
+
+  <div class="cat-divider"><h3>🚸 Pavement Classics</h3></div>
+  <a href="#four-square" class="tile"><div class="tile-icon bg-sun">4️⃣</div><span class="tile-name">4 Square</span></a>
+  <a href="#hopscotch" class="tile"><div class="tile-icon bg-pink">🦘</div><span class="tile-name">Hopscotch</span></a>
+  <a href="#jump-rope" class="tile"><div class="tile-icon bg-cherry">➰</div><span class="tile-name">Jump Rope</span></a>
+  <a href="#wall-ball" class="tile"><div class="tile-icon bg-slate">🧱</div><span class="tile-name">Wall Ball</span></a>
+
+  <div class="cat-divider"><h3>⚾ Ball Games</h3></div>
+  <a href="#kickball" class="tile"><div class="tile-icon bg-cherry">⚽</div><span class="tile-name">Kickball</span></a>
+  <a href="#wiffle-ball" class="tile"><div class="tile-icon bg-sky">⚾</div><span class="tile-name">Wiffle Ball</span></a>
+  <a href="#spud" class="tile"><div class="tile-icon bg-sunset">🏀</div><span class="tile-name">Spud (Jackpot)</span></a>
+
+  <div class="cat-divider"><h3>🏃 Tag &amp; Chase</h3></div>
+  <a href="#tag" class="tile"><div class="tile-icon bg-sun">🏃</div><span class="tile-name">Tag</span></a>
+  <a href="#hide-seek" class="tile"><div class="tile-icon bg-berry">🙈</div><span class="tile-name">Hide-and-Seek</span></a>
+  <a href="#manhunt" class="tile"><div class="tile-icon bg-slate">🚩</div><span class="tile-name">Manhunt &amp; CTF</span></a>
+  <a href="#ghost" class="tile"><div class="tile-icon bg-navy">👻</div><span class="tile-name">Ghost in the Graveyard</span></a>
+  <a href="#listen-react" class="tile"><div class="tile-icon bg-cherry">🛑</div><span class="tile-name">Listen-and-React</span></a>
+  <a href="#pool-games" class="tile"><div class="tile-icon bg-sky">🌊</div><span class="tile-name">Pool Games</span></a>
+
+  <div class="cat-divider"><h3>⚡ Anytime &amp; Specialty</h3></div>
+  <a href="#rock-climbing" class="tile"><div class="tile-icon bg-slate">🧗</div><span class="tile-name">Rock Climbing</span></a>
+  <a href="#limbo" class="tile"><div class="tile-icon bg-pink">🤸</div><span class="tile-name">Limbo</span></a>
+  <a href="#settler" class="tile"><div class="tile-icon bg-grass">✊</div><span class="tile-name">Settler Games</span></a>
+  <a href="#road-trip" class="tile"><div class="tile-icon bg-navy">🚗</div><span class="tile-name">Road Trip Games</span></a>
+  <a href="#license-plate" class="tile"><div class="tile-icon bg-teal">🗺️</div><span class="tile-name">License Plate Game</span></a>
+
+</div>
+
+
+
+
+<h2 style="margin-top:2.5rem">The Games</h2>
+<p style="color:var(--ink-soft); margin-bottom:1rem">In the order from the tile grid above. Skim, find what you need, then go play.</p>
+
+<div class="game" id="bocce">
+  <div class="game-header theme-sage">
+    <div class="icon">🟢</div>
+    <div>
+      <h2>Bocce</h2>
+      <div class="sub">The Italian lawn game</div>
+    </div>
+  </div>
+  <div class="game-body">
+    <h4>What you need</h4>
+    <p>8 large balls (4 per team, different colors) + 1 small white "pallino" + flat-ish lawn or sand court</p>
+    <h4>How to play</h4>
+    <ul>
+      <li>A flat patch of yard, gravel, or sand works as a court.</li>
+      <li>One team rolls the small <strong>pallino</strong> down the court first.</li>
+      <li>That team rolls one bocce ball, trying to get close to the pallino.</li>
+      <li>Now the OTHER team rolls — and keeps rolling until they get a ball closer than the first team's.</li>
+      <li>When one team gets closer, the OTHER team rolls again.</li>
+      <li>After all 8 balls are out: count points. Closest team scores 1 point for EACH of their balls closer than the opponent's closest ball.</li>
+      <li>First team to 12 (or 15 or 21 — pick before you start) wins.</li>
+    </ul>
+    <div class="tip"><strong>💡 Pro tip:</strong> You can throw HARD to knock the other team's balls away if you can't get closer. That's a legit move called "knocking" or "spocking."</div>
+        <div class="video-row-label">Watch &amp; learn</div>
+    <div class="video-row">
+      <a class="video-link" href="https://www.youtube.com/watch?v=_8v6wfXGirA" target="_blank" rel="noopener">▶ Triple S Games: rules in 2 minutes</a>
+      <a class="video-link" href="https://www.youtube.com/watch?v=mkZTlXKOnbc" target="_blank" rel="noopener">▶ Backyard rules walkthrough</a>
+    </div>
+    <a class="back-to-top" href="#top">↑ Back to the top</a>
+  </div>
+</div>
+
+<div class="game" id="croquet">
+  <div class="game-header theme-pink">
+    <div class="icon">🎯</div>
+    <div>
+      <h2>Croquet</h2>
+      <div class="sub">The garden-party classic</div>
+    </div>
+  </div>
+  <div class="game-body">
+    <h4>What you need</h4>
+    <p>6-wicket croquet set (mallets, balls, wire wickets, 2 stakes) + open lawn</p>
+    <h4>How to play</h4>
+    <ul>
+      <li>Set up wickets in the classic 9-wicket pattern (most sets come with a diagram).</li>
+      <li>Each player gets a colored mallet and matching ball.</li>
+      <li>Hit your ball through the wickets in order, in the right direction.</li>
+      <li>You get an EXTRA hit if you knock your ball through a wicket OR hit another player's ball.</li>
+      <li>If you hit another player's ball, you can place your ball next to theirs and "send them" with a hit — fun but mean.</li>
+      <li>First player to go through all the wickets and hit the final stake wins.</li>
+    </ul>
+    <div class="tip"><strong>💡 Pro tip:</strong> Direction matters more than power. A controlled shot through the next wicket beats a wild blast.</div>
+        <div class="video-row-label">Watch &amp; learn</div>
+    <div class="video-row">
+      <a class="video-link" href="https://www.youtube.com/results?search_query=how+to+play+9+wicket+croquet+rules" target="_blank" rel="noopener">▶ How to play 9-wicket croquet</a>
+    </div>
+    <a class="back-to-top" href="#top">↑ Back to the top</a>
+  </div>
+</div>
+
+<div class="game" id="cornhole">
+  <div class="game-header theme-gold">
+    <div class="icon">🌽</div>
+    <div>
+      <h2>Cornhole</h2>
+      <div class="sub">The backyard BBQ champion</div>
+    </div>
+  </div>
+  <div class="game-body">
+    <h4>What you need</h4>
+    <p>2 angled wooden boards with a hole + 8 bean bags (4 per team, 2 colors) + about 30 feet of space</p>
+    <h4>How to play</h4>
+    <ul>
+      <li>Set the two boards 27 feet apart (or closer for kids).</li>
+      <li>Two teams, one on each board. Each player gets 4 bags.</li>
+      <li>Stand by your board. Toss your bags at the OTHER board.</li>
+      <li>Bag IN the hole = <strong>3 points</strong>. Bag on the board = <strong>1 point</strong>.</li>
+      <li>After all 8 bags are thrown, do "cancellation scoring": subtract the lower team's score from the higher team's. Only one team scores per round.</li>
+      <li>First team to 21 wins (must win by 2). Going OVER 21 = you go back to 15.</li>
+    </ul>
+    <div class="tip"><strong>💡 Pro tip:</strong> A bag that goes IN counts even if it knocks another bag out first. Use this for sneaky comeback shots.</div>
+        <div class="video-row-label">Watch &amp; learn</div>
+    <div class="video-row">
+      <a class="video-link" href="https://www.youtube.com/results?search_query=cornhole+rules+for+kids+how+to+play" target="_blank" rel="noopener">▶ Cornhole rules for kids</a>
+      <a class="video-link" href="https://www.youtube.com/results?search_query=how+to+throw+cornhole+bag+technique" target="_blank" rel="noopener">▶ How to throw a cornhole bag</a>
+    </div>
+    <a class="back-to-top" href="#top">↑ Back to the top</a>
+  </div>
+</div>
+
+<div class="game" id="ladder-toss">
+  <div class="game-header theme-sunset">
+    <div class="icon">🪜</div>
+    <div>
+      <h2>Ladder Toss (Ladder Ball)</h2>
+      <div class="sub">The cabin-and-tailgate favorite</div>
+    </div>
+  </div>
+  <div class="game-body">
+    <h4>What you need</h4>
+    <p>Ladder Toss set (2 ladders + 6 bolas — string with 2 balls on each end), 3 per team</p>
+    <h4>How to play</h4>
+    <ul>
+      <li>Set the ladders 15 feet apart (or closer for kids).</li>
+      <li>Teams stand at one ladder and throw bolas at the OTHER ladder.</li>
+      <li>A bola that wraps around a rung = points. Top rung = <strong>3</strong>. Middle = <strong>2</strong>. Bottom = <strong>1</strong>.</li>
+      <li>After everyone throws their 3 bolas, calculate "cancellation scoring": subtract the lower team's score from the higher.</li>
+      <li>First team to EXACTLY 21 wins. Going OVER 21 = your score for that round is wiped out.</li>
+    </ul>
+    <div class="tip"><strong>💡 Pro tip:</strong> Throw underhand with a slight upward toss. Aim slightly past the rung — the bola wraps as it falls.</div>
+        <div class="video-row-label">Watch &amp; learn</div>
+    <div class="video-row">
+      <a class="video-link" href="https://www.youtube.com/results?search_query=how+to+play+ladder+toss+ladder+ball+rules" target="_blank" rel="noopener">▶ Ladder toss rules &amp; tips</a>
+    </div>
+    <a class="back-to-top" href="#top">↑ Back to the top</a>
+  </div>
+</div>
+
+<div class="game" id="molkky">
+  <div class="game-header theme-grass">
+    <div class="icon">🪵</div>
+    <div>
+      <h2>Mölkky</h2>
+      <div class="sub">The Finnish pin-tossing game</div>
+    </div>
+  </div>
+  <div class="game-body">
+    <h4>What you need</h4>
+    <p>12 numbered wooden pins (1–12) + 1 throwing pin (the "Mölkky") + lawn or driveway</p>
+    <h4>How to play</h4>
+    <ul>
+      <li>Set the 12 pins close together about 12 feet from the throwing line.</li>
+      <li>Players take turns throwing the Mölkky underhand at the pins.</li>
+      <li>Knock down ONE pin = score the NUMBER on that pin.</li>
+      <li>Knock down MULTIPLE pins = score the COUNT of pins knocked down (not the numbers).</li>
+      <li>After each turn, stand the pins UP exactly where they landed — they spread out over the game.</li>
+      <li>First to <strong>exactly 50 points</strong> wins. Go OVER 50 and you drop back to 25.</li>
+      <li>Miss 3 turns in a row = you're out.</li>
+    </ul>
+    <div class="tip"><strong>💡 Pro tip:</strong> Early in the game, aim for the high-number pins to build a lead. Near 50, aim very carefully — going over is brutal.</div>
+        <div class="video-row-label">Watch &amp; learn</div>
+    <div class="video-row">
+      <a class="video-link" href="https://www.youtube.com/results?search_query=how+to+play+molkky+rules" target="_blank" rel="noopener">▶ Mölkky rules explained</a>
+    </div>
+    <a class="back-to-top" href="#top">↑ Back to the top</a>
+  </div>
+</div>
+
+<div class="game" id="ring-toss">
+  <div class="game-header theme-sun">
+    <div class="icon">⭕</div>
+    <div>
+      <h2>Ring Toss</h2>
+      <div class="sub">The fair-game classic</div>
+    </div>
+  </div>
+  <div class="game-body">
+    <h4>What you need</h4>
+    <p>Ring toss set (a base with pegs + 6+ rope or plastic rings) — or improvise: a stake in the ground + jar rings or hula-hoop chunks</p>
+    <h4>How to play</h4>
+    <ul>
+      <li>Place the peg/stake about 10 feet away (closer for younger kids).</li>
+      <li>Each player gets 5 rings per turn.</li>
+      <li>Stand behind the line. Toss the rings underhand toward the peg.</li>
+      <li>A ring around the peg = <strong>1 point</strong>. (If you have multiple pegs, the farther/smaller pegs = more points.)</li>
+      <li>First to 21 wins, or just play "best of 5 rounds."</li>
+    </ul>
+    <div class="tip"><strong>💡 Pro tip:</strong> Gentle underhand toss with a slight arc. Aim slightly PAST the peg — the ring drops onto it as it falls.</div>
+        <div class="video-row-label">Watch &amp; learn</div>
+    <div class="video-row">
+      <a class="video-link" href="https://www.youtube.com/results?search_query=ring+toss+game+for+kids" target="_blank" rel="noopener">▶ Ring toss for kids</a>
+    </div>
+    <a class="back-to-top" href="#top">↑ Back to the top</a>
+  </div>
+</div>
+
+<div class="game" id="horseshoes">
+  <div class="game-header theme-slate">
+    <div class="icon">🧲</div>
+    <div>
+      <h2>Horseshoes</h2>
+      <div class="sub">A heavier cousin of ring toss</div>
+    </div>
+  </div>
+  <div class="game-body">
+    <h4>What you need</h4>
+    <p>4 metal (or rubber, for kids) horseshoes + 2 stakes pounded into the ground 40 feet apart (less for kids — 20 feet is fine)</p>
+    <h4>How to play</h4>
+    <ul>
+      <li>Set up two stakes, 40 feet apart (or closer for kids).</li>
+      <li>Two players or two teams. Each side gets 2 horseshoes.</li>
+      <li>Players take turns throwing all of their shoes at the OPPOSITE stake.</li>
+      <li><strong>Ringer</strong> (shoe wraps around the stake) = <strong>3 points</strong>.</li>
+      <li><strong>Leaner</strong> (shoe touching the stake) = <strong>2 points</strong>.</li>
+      <li>Closest shoe to the stake (within 6 inches) = <strong>1 point</strong>.</li>
+      <li>Only ONE team scores per round (closest shoes). First to 21 wins.</li>
+    </ul>
+    <div class="tip"><strong>💡 Pro tip:</strong> Hold the horseshoe by the curve, not the open ends. A flip in the air helps it wrap around the stake.</div>
+        <div class="video-row-label">Watch &amp; learn</div>
+    <div class="video-row">
+      <a class="video-link" href="https://www.youtube.com/results?search_query=how+to+play+horseshoes+rules+pitching" target="_blank" rel="noopener">▶ Horseshoes rules &amp; pitching</a>
+    </div>
+    <a class="back-to-top" href="#top">↑ Back to the top</a>
+  </div>
+</div>
+
+<div class="game" id="spikeball">
+  <div class="game-header theme-cherry">
+    <div class="icon">🟡</div>
+    <div>
+      <h2>Spikeball (Roundnet)</h2>
+      <div class="sub">The trampoline-net 2v2 game</div>
+    </div>
+  </div>
+  <div class="game-body">
+    <h4>What you need</h4>
+    <p>Spikeball set (round mini-trampoline net + small yellow ball) + open space (grass, beach, gym)</p>
+    <h4>How to play</h4>
+    <ul>
+      <li>Set the net flat on the ground. 4 players, 2 teams of 2.</li>
+      <li>Players stand around the net. One team serves: spike the ball DOWN onto the net so it bounces toward the other team.</li>
+      <li>The other team has up to <strong>3 hits</strong> to return — like volleyball: pass, set, spike back onto the net.</li>
+      <li>If you miss the net, hit the rim, or hit the ground = OTHER team scores.</li>
+      <li>There are NO sides — players can move around the net once the ball is in play.</li>
+      <li>First team to 21 points wins (must win by 2).</li>
+    </ul>
+    <div class="tip"><strong>💡 Pro tip:</strong> On the third hit, AIM AT THE NET — angle the spike so it bounces FAR from the other team. Pick a spot where they aren't.</div>
+        <div class="video-row-label">Watch &amp; learn</div>
+    <div class="video-row">
+      <a class="video-link" href="https://www.youtube.com/watch?v=irgTrG6d6eA" target="_blank" rel="noopener">▶ Triple S Games: rules in 2 minutes</a>
+      <a class="video-link" href="https://www.youtube.com/results?search_query=spikeball+tips+for+beginners" target="_blank" rel="noopener">▶ Beginner tips &amp; strategy</a>
+    </div>
+    <a class="back-to-top" href="#top">↑ Back to the top</a>
+  </div>
+</div>
+
+<div class="game" id="kanjam">
+  <div class="game-header theme-sky">
+    <div class="icon">🥏</div>
+    <div>
+      <h2>KanJam</h2>
+      <div class="sub">The Frisbee-and-bucket game</div>
+    </div>
+  </div>
+  <div class="game-body">
+    <h4>What you need</h4>
+    <p>2 KanJam plastic cans (with a slot in the front) + 1 frisbee + open space (about 50 feet)</p>
+    <h4>How to play</h4>
+    <ul>
+      <li>Set the two cans 50 feet apart. 4 players, 2 teams of 2.</li>
+      <li>One teammate THROWS the frisbee from beside their can. The OTHER teammate, standing by the FAR can, can REDIRECT the frisbee with their hands.</li>
+      <li>Hit the side of the OPPOSITE can (no redirect) = <strong>1 point</strong>. Redirect off teammate into the side = <strong>2 points</strong>. Redirect into the SLOT = INSTANT WIN.</li>
+      <li>Throw goes directly into the slot (no redirect, no teammate hit) = also instant win.</li>
+      <li>Teams alternate throws. First to EXACTLY 21 wins. Going over = back to 11.</li>
+    </ul>
+    <div class="tip"><strong>💡 Pro tip:</strong> For the redirect, use a flat open palm. Tap the frisbee — don't grab it. The slot win is rare and glorious.</div>
+        <div class="video-row-label">Watch &amp; learn</div>
+    <div class="video-row">
+      <a class="video-link" href="https://www.youtube.com/results?search_query=how+to+play+kanjam+rules" target="_blank" rel="noopener">▶ KanJam rules &amp; tips</a>
+    </div>
+    <a class="back-to-top" href="#top">↑ Back to the top</a>
+  </div>
+</div>
+
+<div class="game" id="frisbee">
+  <div class="game-header theme-grass">
+    <div class="icon">🥏</div>
+    <div>
+      <h2>Frisbee (Catch &amp; Ultimate)</h2>
+      <div class="sub">The universal flying disc</div>
+    </div>
+  </div>
+  <div class="game-body">
+    <h4>What you need</h4>
+    <p>1 disc + open space</p>
+    <h4>How to play</h4>
+    <ul>
+      <li><strong>Simple catch:</strong> stand 20+ feet apart, throw to each other. Build distance and accuracy.</li>
+      <li><strong>Backhand throw:</strong> hold disc flat, thumb on top. Step toward your target, snap your wrist as you release.</li>
+      <li><strong>Forehand (flick):</strong> hold like a peace sign on the underside. Snap wrist forward and out. Harder to learn — practice patient.</li>
+      <li><strong>Ultimate-lite:</strong> 2 teams. End zones at each end of a field. Catch the disc in the opposing end zone = 1 point. You CAN'T run with the disc — once you catch it, you have to pivot and pass.</li>
+      <li>If the disc is dropped, intercepted, or hits the ground = other team takes over.</li>
+    </ul>
+    <div class="tip"><strong>💡 Pro tip:</strong> Look at where you're throwing, not at the disc. Step toward your target. Snap the wrist hard at the end.</div>
+        <div class="video-row-label">Watch &amp; learn</div>
+    <div class="video-row">
+      <a class="video-link" href="https://www.youtube.com/results?search_query=how+to+throw+frisbee+kids+backhand" target="_blank" rel="noopener">▶ How to throw a frisbee</a>
+      <a class="video-link" href="https://www.youtube.com/results?search_query=ultimate+frisbee+for+beginners+kids" target="_blank" rel="noopener">▶ Ultimate Frisbee for beginners</a>
+    </div>
+    <a class="back-to-top" href="#top">↑ Back to the top</a>
+  </div>
+</div>
+
+<div class="game" id="badminton">
+  <div class="game-header theme-sky">
+    <div class="icon">🏸</div>
+    <div>
+      <h2>Badminton</h2>
+      <div class="sub">The backyard cousin of tennis</div>
+    </div>
+  </div>
+  <div class="game-body">
+    <h4>What you need</h4>
+    <p>Net (5 ft high) + 2 racquets + a shuttlecock (also called "birdie") + flat space</p>
+    <h4>How to play</h4>
+    <ul>
+      <li>Set up the net. Singles (1v1) or doubles (2v2).</li>
+      <li>Serve from behind the back line, underhand only. Serve must go DIAGONALLY into the opponent's box.</li>
+      <li>Hit the birdie back and forth over the net. It must NOT touch the ground on your side or you lose the point.</li>
+      <li>Birdie touches the ground = point for the OTHER team.</li>
+      <li>You score on EVERY rally — whoever wins the rally gets the point.</li>
+      <li>First to 21 points wins (must win by 2).</li>
+    </ul>
+    <div class="tip"><strong>💡 Pro tip:</strong> Use your WRIST, not your arm. The birdie is featherlight — small flicks are more accurate than big swings.</div>
+        <div class="video-row-label">Watch &amp; learn</div>
+    <div class="video-row">
+      <a class="video-link" href="https://www.youtube.com/results?search_query=badminton+for+kids+basics" target="_blank" rel="noopener">▶ Badminton basics for kids</a>
+    </div>
+    <a class="back-to-top" href="#top">↑ Back to the top</a>
+  </div>
+</div>
+
+<div class="game" id="volleyball">
+  <div class="game-header theme-sunset">
+    <div class="icon">🏐</div>
+    <div>
+      <h2>Volleyball</h2>
+      <div class="sub">Bump, set, spike</div>
+    </div>
+  </div>
+  <div class="game-body">
+    <h4>What you need</h4>
+    <p>Volleyball + a net (or just a rope between two trees) + open space (grass, beach, sand)</p>
+    <h4>How to play</h4>
+    <ul>
+      <li>Two teams (2v2 is great, 6v6 is real). Net in the middle.</li>
+      <li>Serve from behind the back line — hit the ball over the net.</li>
+      <li>Once it's in play, each team gets up to <strong>3 hits</strong> to send it back: <strong>BUMP</strong> (forearm pass), <strong>SET</strong> (overhead pop), <strong>SPIKE</strong> (slam over the net).</li>
+      <li>Ball hits the ground on your side, or you can't return it = OTHER team scores.</li>
+      <li>Score on every rally. First team to 25 points wins (must win by 2).</li>
+    </ul>
+    <div class="tip"><strong>💡 Pro tip:</strong> For the bump: arms straight, hands clasped, hit with the FOREARMS not the wrists. Don't swing — let the ball do the work.</div>
+        <div class="video-row-label">Watch &amp; learn</div>
+    <div class="video-row">
+      <a class="video-link" href="https://www.youtube.com/results?search_query=volleyball+basics+bump+set+spike+kids" target="_blank" rel="noopener">▶ Bump, set, spike for beginners</a>
+    </div>
+    <a class="back-to-top" href="#top">↑ Back to the top</a>
+  </div>
+</div>
+
+<div class="game" id="tetherball">
+  <div class="game-header theme-cherry">
+    <div class="icon">🎾</div>
+    <div>
+      <h2>Tetherball</h2>
+      <div class="sub">The playground 1-on-1</div>
+    </div>
+  </div>
+  <div class="game-body">
+    <h4>What you need</h4>
+    <p>Tetherball pole + tetherball (a small ball on a rope attached to the top of the pole)</p>
+    <h4>How to play</h4>
+    <ul>
+      <li>1-on-1 game. Two players, one on each side of the pole.</li>
+      <li>Pick a direction. One player hits the ball IN that direction. The other player tries to hit it BACK in the OPPOSITE direction.</li>
+      <li>Goal: wrap the rope ALL the way around the pole in YOUR direction.</li>
+      <li>You can hit with hands, fists, or even a forearm.</li>
+      <li>NO grabbing the rope. NO touching the pole. NO going under your direction line. Break a rule = the other player wins.</li>
+    </ul>
+    <div class="tip"><strong>💡 Pro tip:</strong> Hit the ball EARLY, while it's still on the high arc moving toward you. Wait too long and your opponent gets the next swing.</div>
+        <div class="video-row-label">Watch &amp; learn</div>
+    <div class="video-row">
+      <a class="video-link" href="https://www.youtube.com/results?search_query=tetherball+rules+how+to+play" target="_blank" rel="noopener">▶ Tetherball rules &amp; tips</a>
+    </div>
+    <a class="back-to-top" href="#top">↑ Back to the top</a>
+  </div>
+</div>
+
+<div class="game" id="shuffleboard">
+  <div class="game-header theme-gold">
+    <div class="icon">🟫</div>
+    <div>
+      <h2>Shuffleboard</h2>
+      <div class="sub">Slide your way to victory</div>
+    </div>
+  </div>
+  <div class="game-body">
+    <h4>What you need</h4>
+    <p>Shuffleboard court (chalk-marked driveway works) OR shuffleboard table + 8 pucks (4 per side, 2 colors)</p>
+    <h4>How to play</h4>
+    <ul>
+      <li>Mark scoring zones at the far end: 10 (back), 8 (middle), 7 (front), and a "10-OFF" trap (penalty zone).</li>
+      <li>Players alternate sliding pucks toward the far end.</li>
+      <li>Pucks that come to rest in a scoring zone = those points. Pucks in 10-OFF = MINUS 10.</li>
+      <li>You can KNOCK opponents off the scoring zones with your own pucks.</li>
+      <li>After all 8 pucks are out, tally points. First to 75 (or 100, or whatever you agreed) wins.</li>
+    </ul>
+    <div class="tip"><strong>💡 Pro tip:</strong> Don't always go for the 10 — sometimes a "blocker" puck protecting your other pucks is worth more than risking the 10-OFF.</div>
+        <div class="video-row-label">Watch &amp; learn</div>
+    <div class="video-row">
+      <a class="video-link" href="https://www.youtube.com/results?search_query=how+to+play+shuffleboard+backyard" target="_blank" rel="noopener">▶ How to play shuffleboard</a>
+    </div>
+    <a class="back-to-top" href="#top">↑ Back to the top</a>
+  </div>
+</div>
+
+<div class="game" id="mini-golf">
+  <div class="game-header theme-grass">
+    <div class="icon">⛳</div>
+    <div>
+      <h2>Mini Golf</h2>
+      <div class="sub">Putt-putt for the win</div>
+    </div>
+  </div>
+  <div class="game-body">
+    <h4>What you need</h4>
+    <p>A mini golf course + putter + ball + scorecard + pencil (usually provided)</p>
+    <h4>How to play</h4>
+    <ul>
+      <li>18 holes, usually par 3 each.</li>
+      <li>Take turns. Whoever scored highest on the LAST hole goes first on the next.</li>
+      <li>Putt the ball with as few strokes as possible.</li>
+      <li>Ball must come to rest before the next stroke.</li>
+      <li>If you take more than 6 strokes on one hole, pick up the ball and write <strong>6</strong> on the scorecard. Move on.</li>
+      <li>Total all 18 holes. <strong>Lowest score wins.</strong></li>
+    </ul>
+    <div class="tip"><strong>💡 Pro tip:</strong> Read the slope. Don't aim where you want the ball to GO — aim where the ball will ROLL FROM. A gentle tap is usually better than a hard one.</div>
+        <div class="video-row-label">Watch &amp; learn</div>
+    <div class="video-row">
+      <a class="video-link" href="https://www.youtube.com/results?search_query=mini+golf+tips+for+kids" target="_blank" rel="noopener">▶ Mini golf tips for kids</a>
+    </div>
+    <a class="back-to-top" href="#top">↑ Back to the top</a>
+  </div>
+</div>
+
+<div class="game" id="disc-golf">
+  <div class="game-header theme-teal">
+    <div class="icon">🥏</div>
+    <div>
+      <h2>Disc Golf</h2>
+      <div class="sub">Frisbee meets golf</div>
+    </div>
+  </div>
+  <div class="game-body">
+    <h4>What you need</h4>
+    <p>1–3 discs per person (a "driver" for distance, a "putter" for short shots) + a disc golf course (free at many parks)</p>
+    <h4>How to play</h4>
+    <ul>
+      <li>Like real golf — each hole has a tee box and a "basket" (a metal chain catcher).</li>
+      <li>Tee off at the start of each hole.</li>
+      <li>After your throw, your next throw is from WHERE THE DISC LANDED.</li>
+      <li>Keep throwing until the disc lands in the basket.</li>
+      <li>Count your throws. <strong>Fewer = better.</strong></li>
+      <li>Each hole has a "par" — the expected number of throws.</li>
+    </ul>
+    <div class="tip"><strong>💡 Pro tip:</strong> For distance: release the disc FLAT, with a snap of the wrist. For control: use a slower disc (putter) even on long shots — you'll lose distance but gain accuracy.</div>
+        <div class="video-row-label">Watch &amp; learn</div>
+    <div class="video-row">
+      <a class="video-link" href="https://www.youtube.com/results?search_query=disc+golf+for+beginners+kids" target="_blank" rel="noopener">▶ Disc golf for beginners</a>
+    </div>
+    <a class="back-to-top" href="#top">↑ Back to the top</a>
+  </div>
+</div>
+
+<div class="game" id="four-square">
+  <div class="game-header theme-sun">
+    <div class="icon">4️⃣</div>
+    <div>
+      <h2>4 Square</h2>
+      <div class="sub">The schoolyard king</div>
+    </div>
+  </div>
+  <div class="game-body">
+    <h4>What you need</h4>
+    <p>Chalk (or 4 floor tiles) + 1 playground ball + 4 players (extras line up to enter)</p>
+    <h4>How to play</h4>
+    <ul>
+      <li>Draw a large square. Divide it into 4 smaller squares. Number them 1–4. Square 1 = "King."</li>
+      <li>One player stands in each square. The King (Square 1) starts.</li>
+      <li>The King bounces the ball ONCE in their square, then hits it (with hands) into someone else's square.</li>
+      <li>That player must let it bounce ONCE in their square, then hit it into someone else's square — and so on.</li>
+      <li>You're OUT if: ball bounces twice in your square, you hit it out, or you fail to hit it.</li>
+      <li>Out = go to the back of the line. Everyone moves up one square. Next person enters at Square 4.</li>
+    </ul>
+    <div class="tip"><strong>💡 Pro tip:</strong> Hit hard CORNER shots to your opponents — those are hardest to return. The King gets to MAKE UP rules (no-spin, slams, around-the-world) — but only the King.</div>
+        <div class="video-row-label">Watch &amp; learn</div>
+    <div class="video-row">
+      <a class="video-link" href="https://www.youtube.com/results?search_query=four+square+rules+kids+playground" target="_blank" rel="noopener">▶ 4 Square rules for kids</a>
+    </div>
+    <a class="back-to-top" href="#top">↑ Back to the top</a>
+  </div>
+</div>
+
+<div class="game" id="hopscotch">
+  <div class="game-header theme-pink">
+    <div class="icon">🦘</div>
+    <div>
+      <h2>Hopscotch</h2>
+      <div class="sub">The chalk-and-pebble classic</div>
+    </div>
+  </div>
+  <div class="game-body">
+    <h4>What you need</h4>
+    <p>Chalk + a small flat marker (stone, beanbag, button) + pavement</p>
+    <h4>How to play</h4>
+    <ul>
+      <li>Draw 10 numbered squares — usually a pattern like 1, 2, 3, 4-5 (side by side), 6, 7-8 (side by side), 9, 10.</li>
+      <li>Player 1: toss your marker onto Square 1.</li>
+      <li>Hop through the squares, SKIPPING the marker square. Single squares = one foot. Side-by-side squares = both feet.</li>
+      <li>At the top (10), turn around and hop back. On the way back, PICK UP the marker as you pass it.</li>
+      <li>Successful trip? Toss to Square 2 next time. Then Square 3. All the way to 10.</li>
+      <li>You're OUT if: marker misses the square, you step on a line, you put two feet in a single square.</li>
+    </ul>
+    <div class="tip"><strong>💡 Pro tip:</strong> Throw the marker first, THEN hop. Lining up the throw is the hardest part — practice the toss before the hop.</div>
+        <div class="video-row-label">Watch &amp; learn</div>
+    <div class="video-row">
+      <a class="video-link" href="https://www.youtube.com/results?search_query=hopscotch+rules+for+kids" target="_blank" rel="noopener">▶ Hopscotch rules &amp; chants</a>
+    </div>
+    <a class="back-to-top" href="#top">↑ Back to the top</a>
+  </div>
+</div>
+
+<div class="game" id="jump-rope">
+  <div class="game-header theme-cherry">
+    <div class="icon">➰</div>
+    <div>
+      <h2>Jump Rope</h2>
+      <div class="sub">Solo, partner, or double-Dutch</div>
+    </div>
+  </div>
+  <div class="game-body">
+    <h4>What you need</h4>
+    <p>A jump rope (or 2 long ropes for double-Dutch) + open space</p>
+    <h4>How to play</h4>
+    <ul>
+      <li><strong>Solo:</strong> hold the rope, swing it over your head, jump when it comes around. Land soft. Count the jumps.</li>
+      <li><strong>Long rope (2 spinners + 1 jumper):</strong> two people swing a long rope in a steady rhythm. A third person jumps inside.</li>
+      <li><strong>Double Dutch:</strong> two ropes, two spinners, one jumper. Ropes turn opposite directions — like an eggbeater. The jumper hops both ropes.</li>
+      <li><strong>Chants:</strong> "Cinderella, dressed in yella…" — counting chants make it more fun.</li>
+      <li><strong>Stop conditions:</strong> if a jumper trips, they're out and a spinner takes over.</li>
+    </ul>
+    <div class="tip"><strong>💡 Pro tip:</strong> For solo: bend your elbows, let the rope spin from your WRISTS not your shoulders. Small hops, not big jumps.</div>
+        <div class="video-row-label">Watch &amp; learn</div>
+    <div class="video-row">
+      <a class="video-link" href="https://www.youtube.com/results?search_query=jump+rope+for+beginners+kids" target="_blank" rel="noopener">▶ Jump rope basics for kids</a>
+      <a class="video-link" href="https://www.youtube.com/results?search_query=double+dutch+jump+rope+tutorial+kids" target="_blank" rel="noopener">▶ Double Dutch tutorial</a>
+    </div>
+    <a class="back-to-top" href="#top">↑ Back to the top</a>
+  </div>
+</div>
+
+<div class="game" id="wall-ball">
+  <div class="game-header theme-slate">
+    <div class="icon">🧱</div>
+    <div>
+      <h2>Wall Ball (Butts Up)</h2>
+      <div class="sub">The schoolyard wall game</div>
+    </div>
+  </div>
+  <div class="game-body">
+    <h4>What you need</h4>
+    <p>1 tennis or rubber ball + a wall + 2+ players</p>
+    <h4>How to play</h4>
+    <ul>
+      <li>One player throws the ball at the wall. It must hit the wall and bounce back.</li>
+      <li>Another player must catch it ON THE FLY or after ONE bounce.</li>
+      <li>If a player drops it or fails to catch it = they must run and touch the wall before another player can grab the ball and throw it AT the wall again.</li>
+      <li>If they don't touch the wall before the ball hits it = they get a strike (or get to be "butts up" against the wall while everyone throws gently at them, depending on house rules).</li>
+      <li>3 strikes = out.</li>
+    </ul>
+    <div class="tip"><strong>💡 Pro tip:</strong> Aim for the corner where the wall meets the ground — bounces become unpredictable.</div>
+        <div class="video-row-label">Watch &amp; learn</div>
+    <div class="video-row">
+      <a class="video-link" href="https://www.youtube.com/results?search_query=wall+ball+game+rules+butts+up" target="_blank" rel="noopener">▶ Wall ball game rules</a>
+    </div>
+    <a class="back-to-top" href="#top">↑ Back to the top</a>
+  </div>
+</div>
+
+<div class="game" id="kickball">
+  <div class="game-header theme-cherry">
+    <div class="icon">⚽</div>
+    <div>
+      <h2>Kickball</h2>
+      <div class="sub">Baseball, but you kick</div>
+    </div>
+  </div>
+  <div class="game-body">
+    <h4>What you need</h4>
+    <p>1 large rubber ball + 4 bases (frisbees, shirts, chalk Xs) + an open field</p>
+    <h4>How to play</h4>
+    <ul>
+      <li>Two teams. One bats (kicks), one fields.</li>
+      <li>The pitcher ROLLS the ball to the kicker at home plate.</li>
+      <li>The kicker KICKS the rolled ball into the field, then RUNS to first base. As far as they can without being tagged out.</li>
+      <li><strong>You're OUT if:</strong> a fielder catches a kick on the fly, you're tagged with the ball while between bases, or the ball reaches the base before you.</li>
+      <li>When 3 outs are recorded, teams SWITCH.</li>
+      <li>Innings = both teams bat once. Play 6 innings (or however many).</li>
+    </ul>
+    <div class="tip"><strong>💡 Pro tip:</strong> KICK THROUGH the ball — like a soccer shot — not at it. Power AND placement matter. Aim into a gap.</div>
+        <div class="video-row-label">Watch &amp; learn</div>
+    <div class="video-row">
+      <a class="video-link" href="https://www.youtube.com/results?search_query=kickball+rules+for+kids+how+to+play" target="_blank" rel="noopener">▶ Kickball rules for kids</a>
+    </div>
+    <a class="back-to-top" href="#top">↑ Back to the top</a>
+  </div>
+</div>
+
+<div class="game" id="wiffle-ball">
+  <div class="game-header theme-sky">
+    <div class="icon">⚾</div>
+    <div>
+      <h2>Wiffle Ball</h2>
+      <div class="sub">Backyard baseball, simplified</div>
+    </div>
+  </div>
+  <div class="game-body">
+    <h4>What you need</h4>
+    <p>1 Wiffle ball (plastic, with holes) + 1 yellow plastic Wiffle bat + open space (yard, driveway)</p>
+    <h4>How to play</h4>
+    <ul>
+      <li>Just like baseball — but with way fewer players (1v1 works!).</li>
+      <li>Set up a "strike zone" against a wall or behind the batter (a chalk square works).</li>
+      <li>Pitcher pitches. Batter swings. Hit it in fair territory = on base. Miss 3 = strike out. 4 balls = walk.</li>
+      <li><strong>"Ghost runners":</strong> with few players, when someone's on base they "live" on that base until the next batter advances them.</li>
+      <li>Most yards have "ground rule doubles" and "automatic home runs" based on landmarks. Pick yours before you start.</li>
+    </ul>
+    <div class="tip"><strong>💡 Pro tip:</strong> Wiffle balls CURVE if you hold them with the holes facing one direction. Experiment — the curves get wild.</div>
+        <div class="video-row-label">Watch &amp; learn</div>
+    <div class="video-row">
+      <a class="video-link" href="https://www.youtube.com/results?search_query=wiffle+ball+rules+backyard+kids" target="_blank" rel="noopener">▶ Wiffle Ball backyard rules</a>
+      <a class="video-link" href="https://www.youtube.com/results?search_query=how+to+throw+wiffle+ball+curve" target="_blank" rel="noopener">▶ How to throw a Wiffle ball curve</a>
+    </div>
+    <a class="back-to-top" href="#top">↑ Back to the top</a>
+  </div>
+</div>
+
+<div class="game" id="spud">
+  <div class="game-header theme-sunset">
+    <div class="icon">🏀</div>
+    <div>
+      <h2>Spud (Jackpot)</h2>
+      <div class="sub">The yelling, freezing, throwing game</div>
+    </div>
+  </div>
+  <div class="game-body">
+    <h4>What you need</h4>
+    <p>1 ball + 3+ players + open space</p>
+    <h4>How to play</h4>
+    <ul>
+      <li>Each player gets a NUMBER (1, 2, 3...).</li>
+      <li><strong>"It"</strong> tosses the ball straight up and calls out a number.</li>
+      <li>EVERYONE runs AWAY from where the ball will land — except the player whose number was called, who runs TOWARD the ball.</li>
+      <li>When that player catches the ball, they yell <strong>"SPUD!"</strong> — everyone FREEZES.</li>
+      <li>The catcher takes 3 BIG STEPS toward any frozen player, then THROWS the ball at them.</li>
+      <li>Hit = that player gets a letter (S, P, U, D). Miss = thrower gets the letter.</li>
+      <li>Spell S-P-U-D and you're OUT. Last player standing wins.</li>
+    </ul>
+    <div class="tip"><strong>💡 Pro tip:</strong> Watch which way "It" is looking when they toss the ball. They'll often call the number of someone close — a clue.</div>
+        <div class="video-row-label">Watch &amp; learn</div>
+    <div class="video-row">
+      <a class="video-link" href="https://www.youtube.com/results?search_query=how+to+play+spud+game+kids" target="_blank" rel="noopener">▶ Spud game rules</a>
+    </div>
+    <a class="back-to-top" href="#top">↑ Back to the top</a>
+  </div>
+</div>
+
+<div class="game" id="tag">
+  <div class="game-header theme-sun">
+    <div class="icon">🏃</div>
+    <div>
+      <h2>Tag (and variations)</h2>
+      <div class="sub">The eternal game</div>
+    </div>
+  </div>
+  <div class="game-body">
+    <h4>What you need</h4>
+    <p>A group of kids + open space</p>
+    <h4>How to play</h4>
+    <ul>
+      <li><strong>Basic Tag:</strong> one person is "It." Touch (tag) someone — now they're It. Repeat forever.</li>
+      <li><strong>Freeze Tag:</strong> when "It" tags you, you FREEZE in place. Another player can unfreeze you by tagging you back. "It" wins when everyone's frozen.</li>
+      <li><strong>TV Tag:</strong> to avoid being tagged, drop into a crouch and yell the name of a TV show. You can't repeat one. Stay frozen until someone "unfreezes" you with a tag.</li>
+      <li><strong>Shadow Tag:</strong> "It" tags you by stepping on your SHADOW. Sunny days only. Run into the shade for safety.</li>
+      <li><strong>Manhunt-style team tag:</strong> 2 teams. One hides, one seeks. Tagged = sit out the round.</li>
+    </ul>
+    <div class="tip"><strong>💡 Pro tip:</strong> In Freeze Tag, designate "safe zones" (the porch, a tree) where you can rest for a count of 10. Otherwise the kids get exhausted.</div>
+        <div class="video-row-label">Watch &amp; learn</div>
+    <div class="video-row">
+      <a class="video-link" href="https://www.youtube.com/results?search_query=best+tag+games+for+kids+freeze+tag+variations" target="_blank" rel="noopener">▶ Best tag games for kids</a>
+    </div>
+    <a class="back-to-top" href="#top">↑ Back to the top</a>
+  </div>
+</div>
+
+<div class="game" id="hide-seek">
+  <div class="game-header theme-berry">
+    <div class="icon">🙈</div>
+    <div>
+      <h2>Hide-and-Seek (+ Sardines)</h2>
+      <div class="sub">The all-time classic</div>
+    </div>
+  </div>
+  <div class="game-body">
+    <h4>What you need</h4>
+    <p>A house, a yard, or a park + 2+ players</p>
+    <h4>How to play</h4>
+    <ul>
+      <li><strong>Hide-and-Seek:</strong> one player is "It" and counts to 30 (or 100) with eyes closed. Everyone else hides. "It" searches. Last person found wins.</li>
+      <li>When found, you can race "It" back to the counting spot — if you touch base first, you're "safe" for next round.</li>
+      <li><strong>Sardines</strong> (reverse hide-and-seek): ONE person hides; everyone else seeks separately. When you find the hider, you climb in and HIDE WITH them. Last person to find the pile is the next round's hider.</li>
+      <li><strong>Boundaries:</strong> always agree on the area BEFORE starting ("only inside the house," "only this side of the yard").</li>
+      <li><strong>Time limit:</strong> if "It" can't find someone after 5 minutes, call "all-y all-y in come free!" — everyone comes out, round ends.</li>
+    </ul>
+    <div class="tip"><strong>💡 Pro tip:</strong> For Sardines, the BEST hiding spots are big enough to hold multiple kids quietly. Pick a closet, a treehouse, or under a porch.</div>
+        <div class="video-row-label">Watch &amp; learn</div>
+    <div class="video-row">
+      <a class="video-link" href="https://www.youtube.com/results?search_query=hide+and+seek+sardines+game+kids" target="_blank" rel="noopener">▶ Hide-and-seek + Sardines variation</a>
+    </div>
+    <a class="back-to-top" href="#top">↑ Back to the top</a>
+  </div>
+</div>
+
+<div class="game" id="manhunt">
+  <div class="game-header theme-slate">
+    <div class="icon">🚩</div>
+    <div>
+      <h2>Manhunt &amp; Capture the Flag</h2>
+      <div class="sub">Big-group team chase games</div>
+    </div>
+  </div>
+  <div class="game-body">
+    <h4>What you need</h4>
+    <p>A big space (yard, park, woods) + 4+ players + (for CTF) two "flags" — bandanas, towels, sticks</p>
+    <h4>How to play</h4>
+    <ul>
+      <li><strong>Manhunt:</strong> 2 teams. One hides, one seeks. Once a hider is spotted, the seeker chases. Tagged = you join the seeker team. Last hider standing wins.</li>
+      <li><strong>Capture the Flag:</strong> Divide the play area into 2 sides. Each team plants a "flag" on their side and a "jail" zone too.</li>
+      <li>Goal: sneak onto the OTHER team's side, grab their flag, run it back to YOUR side WITHOUT getting tagged.</li>
+      <li>Tagged on the other side = go to jail. A teammate can free you by tagging you while you're in jail.</li>
+      <li>First team to capture the other's flag wins.</li>
+    </ul>
+    <div class="tip"><strong>💡 Pro tip:</strong> In CTF, put 2 "defenders" by the flag, 2 "rescuers" near the jail, and let the rest attack. Coordinated teams win.</div>
+        <div class="video-row-label">Watch &amp; learn</div>
+    <div class="video-row">
+      <a class="video-link" href="https://www.youtube.com/results?search_query=capture+the+flag+game+rules+kids" target="_blank" rel="noopener">▶ Capture the Flag rules</a>
+      <a class="video-link" href="https://www.youtube.com/results?search_query=manhunt+game+for+kids+rules" target="_blank" rel="noopener">▶ Manhunt game guide</a>
+    </div>
+    <a class="back-to-top" href="#top">↑ Back to the top</a>
+  </div>
+</div>
+
+<div class="game" id="ghost">
+  <div class="game-header theme-navy">
+    <div class="icon">👻</div>
+    <div>
+      <h2>Ghost in the Graveyard</h2>
+      <div class="sub">Hide-and-seek at dusk</div>
+    </div>
+  </div>
+  <div class="game-body">
+    <h4>What you need</h4>
+    <p>A yard at dusk or after dark + flashlights (optional) + 3+ players</p>
+    <h4>How to play</h4>
+    <ul>
+      <li>One person is the "Ghost" and hides somewhere in the yard.</li>
+      <li>Everyone else stands at "base" (a porch, a tree) and chants: "One o'clock, two o'clock, three o'clock…" up to 12.</li>
+      <li>After "12 o'clock", they call: <strong>"MIDNIGHT, I HOPE I DON'T SEE A GHOST TONIGHT!"</strong> and walk into the yard searching.</li>
+      <li>When someone SPOTS the Ghost, they YELL <strong>"GHOST IN THE GRAVEYARD!"</strong> and EVERYONE runs back to base.</li>
+      <li>The Ghost chases. Whoever the Ghost tags first = the next Ghost.</li>
+      <li>If everyone makes it back to base safely, same Ghost hides again.</li>
+    </ul>
+    <div class="tip"><strong>💡 Pro tip:</strong> Best played at twilight. Bring flashlights for after-dark games — but the Ghost stays hidden, no light, until spotted.</div>
+        <div class="video-row-label">Watch &amp; learn</div>
+    <div class="video-row">
+      <a class="video-link" href="https://www.youtube.com/results?search_query=ghost+in+the+graveyard+game+rules+kids" target="_blank" rel="noopener">▶ Ghost in the Graveyard explained</a>
+    </div>
+    <a class="back-to-top" href="#top">↑ Back to the top</a>
+  </div>
+</div>
+
+<div class="game" id="listen-react">
+  <div class="game-header theme-cherry">
+    <div class="icon">🛑</div>
+    <div>
+      <h2>Listen-and-React Games</h2>
+      <div class="sub">Red Light, Simon Says, Mother May I</div>
+    </div>
+  </div>
+  <div class="game-body">
+    <h4>What you need</h4>
+    <p>Open space + 2+ players (more = more fun)</p>
+    <h4>How to play</h4>
+    <ul>
+      <li><strong>Red Light, Green Light:</strong> one "caller" at the end. "Green light!" = everyone runs toward them. "Red light!" = everyone FREEZES. Caught moving = back to the start. First to touch the caller wins.</li>
+      <li><strong>Simon Says:</strong> caller gives commands. If they say "Simon says [do X]" → do it. If they just say "[do X]" → DON'T do it. Following the wrong command = out.</li>
+      <li><strong>Mother May I?:</strong> players ask "Mother, may I take 3 baby steps?" or "5 giant steps?" The caller answers "yes" or "no" — or makes a counter-offer ("no, but you may take 2 bunny hops"). First to touch the caller wins.</li>
+    </ul>
+    <div class="tip"><strong>💡 Pro tip:</strong> For Simon Says, the trick is to do the moves WITHOUT thinking too hard about "Simon says." Listening on autopilot is what trips kids up — slow yourself down on each command.</div>
+        <div class="video-row-label">Watch &amp; learn</div>
+    <div class="video-row">
+      <a class="video-link" href="https://www.youtube.com/results?search_query=red+light+green+light+simon+says+kids+game" target="_blank" rel="noopener">▶ Red Light, Green Light + Simon Says + Mother May I</a>
+    </div>
+    <a class="back-to-top" href="#top">↑ Back to the top</a>
+  </div>
+</div>
+
+<div class="game" id="pool-games">
+  <div class="game-header theme-sky">
+    <div class="icon">🌊</div>
+    <div>
+      <h2>Pool Games</h2>
+      <div class="sub">Marco Polo + Sharks &amp; Minnows</div>
+    </div>
+  </div>
+  <div class="game-body">
+    <h4>What you need</h4>
+    <p>A pool + 2+ swimmers</p>
+    <h4>How to play</h4>
+    <ul>
+      <li><strong>Marco Polo:</strong> one player (the "Marco") closes their eyes. They yell "MARCO!" Everyone else has to yell back "POLO!" The Marco tries to tag someone by sound. Whoever they tag is the next Marco.</li>
+      <li>No "fish out of water" — you can't leave the pool to escape (or if you do, you become Marco automatically).</li>
+      <li><strong>Sharks &amp; Minnows:</strong> one player ("shark") on one wall. Everyone else ("minnows") on the opposite wall.</li>
+      <li>Shark calls "Minnows, swim!" Everyone tries to swim to the OTHER wall without being tagged.</li>
+      <li>Tagged minnows become sharks. Repeat until one minnow remains.</li>
+    </ul>
+    <div class="tip"><strong>💡 Pro tip:</strong> For Marco Polo, the Marco can yell "FISH OUT OF WATER!" — if any minnow is partly out of the pool when they do, that minnow becomes the next Marco.</div>
+        <div class="video-row-label">Watch &amp; learn</div>
+    <div class="video-row">
+      <a class="video-link" href="https://www.youtube.com/results?search_query=marco+polo+sharks+and+minnows+pool+games+kids" target="_blank" rel="noopener">▶ Marco Polo + Sharks &amp; Minnows</a>
+    </div>
+    <a class="back-to-top" href="#top">↑ Back to the top</a>
+  </div>
+</div>
+
+<div class="game" id="rock-climbing">
+  <div class="game-header theme-slate">
+    <div class="icon">🧗</div>
+    <div>
+      <h2>Rock Climbing</h2>
+      <div class="sub">Inside, outside, top-rope, bouldering</div>
+    </div>
+  </div>
+  <div class="game-body">
+    <h4>What you need</h4>
+    <p>Climbing shoes (rental at any gym), harness (top-rope), chalk bag (optional), helmet (outdoor), and a climbing gym OR an outdoor route + belayer</p>
+    <h4>How to play</h4>
+    <ul>
+      <li><strong>Bouldering:</strong> no rope, low walls (10–15 ft), padded floor. Climb a route, jump off when done.</li>
+      <li><strong>Top-rope:</strong> a rope is clipped above. You climb, a partner ("belayer") holds the other end and catches you if you fall.</li>
+      <li>Routes are graded by difficulty: <strong>V0–V17</strong> for bouldering. <strong>5.0–5.15</strong> for ropes. Higher = harder.</li>
+      <li>The <strong>3 points of contact</strong> rule: when reaching for a new hold, keep 3 things (hands and feet) on the wall.</li>
+      <li><strong>Calls for top-rope:</strong> "On belay?" → "Belay on!" → "Climbing!" → "Climb on!" Always check.</li>
+    </ul>
+    <div class="tip"><strong>💡 Pro tip:</strong> Your LEGS do the work, not your arms. Find a foothold FIRST, push up with your legs, then reach with your hand. Arms are for balance — legs are for power.</div>
+        <div class="video-row-label">Watch &amp; learn</div>
+    <div class="video-row">
+      <a class="video-link" href="https://www.youtube.com/results?search_query=rock+climbing+for+kids+beginners" target="_blank" rel="noopener">▶ Rock climbing for kids</a>
+      <a class="video-link" href="https://www.youtube.com/results?search_query=top+rope+belay+basics+beginner" target="_blank" rel="noopener">▶ Top-rope belay basics</a>
+    </div>
+    <a class="back-to-top" href="#top">↑ Back to the top</a>
+  </div>
+</div>
+
+<div class="game" id="limbo">
+  <div class="game-header theme-pink">
+    <div class="icon">🤸</div>
+    <div>
+      <h2>Limbo</h2>
+      <div class="sub">How low can you go?</div>
+    </div>
+  </div>
+  <div class="game-body">
+    <h4>What you need</h4>
+    <p>A horizontal stick or pole + 2 people to hold each end (or chair backs) + music (optional but recommended)</p>
+    <h4>How to play</h4>
+    <ul>
+      <li>Two people hold a stick (or broom, or pool noodle) horizontally at chest height.</li>
+      <li>Players take turns walking under it, leaning BACKWARD (not forward).</li>
+      <li>Don't touch the stick. Don't touch the ground with your hands.</li>
+      <li>After everyone goes through, LOWER the stick a few inches.</li>
+      <li>Repeat. Eliminated if you fall, touch the stick, or can't make it under.</li>
+      <li>Last one in wins.</li>
+    </ul>
+    <div class="tip"><strong>💡 Pro tip:</strong> Lean back from the WAIST, not the knees. Your chest goes under first. Calypso music helps the rhythm.</div>
+        <div class="video-row-label">Watch &amp; learn</div>
+    <div class="video-row">
+      <a class="video-link" href="https://www.youtube.com/results?search_query=limbo+dance+how+to+play+kids" target="_blank" rel="noopener">▶ How to limbo</a>
+    </div>
+    <a class="back-to-top" href="#top">↑ Back to the top</a>
+  </div>
+</div>
+
+<div class="game" id="settler">
+  <div class="game-header theme-grass">
+    <div class="icon">✊</div>
+    <div>
+      <h2>Settler Games</h2>
+      <div class="sub">RPS, Thumb War, Mercy</div>
+    </div>
+  </div>
+  <div class="game-body">
+    <h4>What you need</h4>
+    <p>Just two hands, two players, and maybe 30 seconds</p>
+    <h4>How to play</h4>
+    <ul>
+      <li><strong>Rock-Paper-Scissors:</strong> on the count of three, both throw rock (fist), paper (flat hand), or scissors (two fingers). Rock smashes scissors. Scissors cut paper. Paper covers rock. Best of 1, 3, or 5.</li>
+      <li><strong>RPS variations:</strong> "Rock-Paper-Scissors-Lizard-Spock" (5 options). "Roshambo" tournament rounds.</li>
+      <li><strong>Thumb War:</strong> grip hands, thumbs UP. Chant "1, 2, 3, 4, I declare a thumb war!" Try to pin the other person's thumb under yours for 3 seconds.</li>
+      <li><strong>Mercy:</strong> interlace fingers with the other person. Both press down with thumbs and bend each other's wrists. First to yell "MERCY!" loses. (Caution: don't actually hurt each other.)</li>
+    </ul>
+    <div class="tip"><strong>💡 Pro tip:</strong> For RPS: people FALL INTO PATTERNS. If they just won with rock, they're likely to throw paper next (the "winner's rotation"). Use this.</div>
+        <div class="video-row-label">Watch &amp; learn</div>
+    <div class="video-row">
+      <a class="video-link" href="https://www.youtube.com/results?search_query=rock+paper+scissors+winning+strategy" target="_blank" rel="noopener">▶ Rock-Paper-Scissors strategy</a>
+    </div>
+    <a class="back-to-top" href="#top">↑ Back to the top</a>
+  </div>
+</div>
+
+<div class="game" id="road-trip">
+  <div class="game-header theme-navy">
+    <div class="icon">🚗</div>
+    <div>
+      <h2>Road Trip Games</h2>
+      <div class="sub">For the back seat (License Plate Game has its own section below)</div>
+    </div>
+  </div>
+  <div class="game-body">
+    <h4>What you need</h4>
+    <p>A long car ride. That's it.</p>
+    <h4>How to play</h4>
+    <ul>
+      <li><strong>I Spy:</strong> "I spy with my little eye… something <em>red</em>." Others guess until someone gets it. They go next.</li>
+      <li><strong>20 Questions:</strong> one player thinks of a person, place, or thing. Others ask up to 20 YES/NO questions to guess.</li>
+      <li><strong>Slug Bug (Punch Buggy):</strong> see a Volkswagen Beetle = call "Slug bug, [color]!" and (gently) tap your sibling on the shoulder. House rules apply for whether or not actual punches are allowed (we say NO).</li>
+      <li><strong>Alphabet Game:</strong> spot words from billboards/signs that START with each letter — A, then B, then C. First to Z wins.</li>
+      <li><strong>Counting cows / red cars / out-of-state trucks:</strong> pick anything to count. Whoever spots more by the end of the trip wins.</li>
+      <li><strong>The Quiet Game:</strong> the parent classic. Last one to talk wins. Almost never works but always worth a try.</li>
+    </ul>
+    <div class="tip"><strong>💡 Pro tip:</strong> Set a "no negotiation" rule before you start. Whoever calls something FIRST wins it — the back-seat argument over "I saw it first!" can ruin a 4-hour drive.</div>
+        <div class="video-row-label">Watch &amp; learn</div>
+    <div class="video-row">
+      <a class="video-link" href="https://www.youtube.com/results?search_query=best+road+trip+games+for+kids" target="_blank" rel="noopener">▶ Best road trip games for kids</a>
+    </div>
+    <a class="back-to-top" href="#top">↑ Back to the top</a>
+  </div>
+</div>
+
+<div class="game" id="license-plate">
+  <div class="game-header theme-teal">
+    <div class="icon">🗺️</div>
+    <div>
+      <h2>License Plate Game</h2>
+      <div class="sub">Spot all 50 states — and learn geography while you do</div>
+    </div>
+  </div>
+  <div class="game-body">
+    <h4>What you need</h4>
+    <p>A printed US map (one shared or one per kid) + an alphabetical list of all 50 states + DC + a pencil or crayon + a long road trip ahead. Keep both in the seat-back pocket so they're always within reach.</p>
+    <h4>How to play</h4>
+    <ul>
+      <li><strong>The goal:</strong> spot a license plate from every state in the country.</li>
+      <li>When you see a new state, CALL IT OUT so everyone knows.</li>
+      <li><strong>Mark it both ways:</strong> cross it off your alphabetical list AND color it in on your map. Both sides matter — the list tells you what's left; the map tells you WHERE.</li>
+      <li>Common states (Massachusetts, New York, Connecticut, Rhode Island, New Jersey) fill in fast. Rare states (Hawaii, Alaska, North Dakota, South Dakota, Wyoming) might take a year of trips. Those are the trophy moments.</li>
+      <li><strong>Bonus categories</strong> if you want extra credit: Canadian provinces, territory plates (Puerto Rico, Guam, US Virgin Islands), specialty/vanity plates, government plates, military plates, Mexico plates.</li>
+    </ul>
+    <h4>Ways to play it</h4>
+    <ul>
+      <li><strong>Cooperative (recommended):</strong> everyone helps everyone. The team has spotted Vermont when ANYONE spots Vermont. Less arguing.</li>
+      <li><strong>Competitive:</strong> each kid keeps their own map and list. First to call it out crosses it off. Set a clear "first to call wins" rule before you start.</li>
+      <li><strong>Hard mode:</strong> must spot the states in alphabetical order. Alabama first. Then Alaska. Then Arizona. Brutal but instructive.</li>
+      <li><strong>Long game:</strong> the map and list stay in the car for months. Bring them on every road trip. Coloring in Wyoming six months later is a real moment.</li>
+    </ul>
+    <h4>Sneaky geography lessons</h4>
+    <ul>
+      <li>When a state is spotted, ASK: "Can you find it on the map?" Then: "What states does it border?" Then: "What's its capital?"</li>
+      <li>Notice which states share borders — the four corners (Utah, Colorado, Arizona, New Mexico), the Great Lakes states, the Pacific coast.</li>
+      <li>Talk about WHY a plate is here — is the driver from there, or visiting? A New Hampshire plate in Massachusetts is normal. A North Dakota plate in Massachusetts is a story.</li>
+    </ul>
+    <div class="tip"><strong>💡 Pro tip:</strong> Some states are nearly impossible to spot in New England without traveling. Hawaii almost never shows up. Make peace with the fact that finishing the list might take years — that's part of the game. The empty squares on your map are reasons to take more trips.</div>
+        <div class="video-row-label">Watch &amp; learn</div>
+    <div class="video-row">
+      <a class="video-link" href="https://www.youtube.com/results?search_query=license+plate+game+kids+50+states" target="_blank" rel="noopener">▶ License plate game ideas</a>
+      <a class="video-link" href="https://www.youtube.com/results?search_query=teaching+kids+US+states+map+geography" target="_blank" rel="noopener">▶ Teaching kids US geography</a>
+    </div>
+    <a class="back-to-top" href="#top">↑ Back to the top</a>
+  </div>
+</div>
+
+<div class="pull-quote">
+  Games are how we learn to take turns, lose gracefully, win generously, and trust each other in the silly little ways that make a brother a brother and a friend a friend forever.
+</div>
+
+</main>
+
+<footer>
+  — Built with love for Alexander &amp; Nicolas —
+</footer>
+
+<script>
+if ('serviceWorker' in navigator) {
+  window.addEventListener('load', () => navigator.serviceWorker.register('./sw.js').catch(()=>{}));
+}
+</script>
+</body>
+</html>

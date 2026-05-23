@@ -1,0 +1,15 @@
+{
+  "name": "The Family Game Book",
+  "short_name": "Game Book",
+  "description": "33 games for Alexander and Nicolas — yard, schoolyard, party, and classic games",
+  "start_url": "./index.html",
+  "scope": "./",
+  "display": "standalone",
+  "orientation": "any",
+  "background_color": "#f8f4ea",
+  "theme_color": "#1c3a5e",
+  "icons": [
+    {"src": "icon-192.png", "sizes": "192x192", "type": "image/png", "purpose": "any maskable"},
+    {"src": "icon-512.png", "sizes": "512x512", "type": "image/png", "purpose": "any maskable"}
+  ]
+}
